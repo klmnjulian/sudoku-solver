@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sudoku Solver</h1>
+
+        <form method="POST" class="sudoku-form">
+            <table class="sudoku-grid">
+                {% for i in range(9) %}
+                    <tr>
+                        {% for j in range(9) %}
+                            <td>
+                                <input type="number" min="0" max="9" name="cell-{{ i }}-{{ j }}" value="{{ board[i][j] if board else '' }}">
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <button type="submit" class="btn-solve">Solve</button>
+            <button type="button" id="clear-btn" class="btn-clear">Clear</button>
+        </form>
+
+        {% if solved %}
+            <h2 class="solution-header">Solution:</h2>
+            {% if board %}
+                <table class="sudoku-grid">
+                    {% for row in board %}
+                        <tr>
+                            {% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>No Sudoku board provided.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById("clear-btn").addEventListener("click", function() {
+            var inputs = document.querySelectorAll("input[type='number']");
+            inputs.forEach(function(input) {
+                input.value = "";
+            });
+        });
+    </script>
+</body>
+</html>

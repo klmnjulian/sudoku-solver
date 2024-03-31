@@ -1,0 +1,105 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.sudoku-grid {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 360px; /* Adjusted width for the grid */
+    height: 360px; /* Adjusted height for the grid */
+}
+
+.sudoku-grid td {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.sudoku-grid td:nth-child(3n),
+.sudoku-grid td:nth-child(6n),
+.sudoku-grid td:nth-child(9n) {
+    border-right: 2px solid #000; /* thicker right border for every third column */
+}
+
+.sudoku-grid tr:nth-child(3n) td,
+.sudoku-grid tr:nth-child(6n) td,
+.sudoku-grid tr:nth-child(9n) td {
+    border-bottom: 2px solid #000; /* thicker bottom border for every third row */
+}
+
+.sudoku-grid input[type="number"] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+/* Hide the increment arrows */
+.sudoku-grid input[type="number"]::-webkit-inner-spin-button,
+.sudoku-grid input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-solve {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-clear {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-solve:hover {
+    background-color: #45a049;
+}
+
+.btn-clear:hover {
+    background-color: darkred;
+}
+
+.solution-header {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
